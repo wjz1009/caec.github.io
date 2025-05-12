@@ -1,0 +1,755 @@
+<!D
+OCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西安市长安区第二初级中学</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind主题 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E90FF',
+                        secondary: '#FF7F50',
+                        dark: '#2D3748',
+                        light: '#F7FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-scale {
+                @apply hover:scale-105 transition-all duration-300;
+            }
+        }
+    </style>
+    
+    <style>
+        /* 基础样式 */
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        /* 导航栏滚动效果 */
+        .navbar-scrolled {
+            @apply bg-white shadow-md;
+        }
+        
+        /* 轮播图动画 */
+        .banner-img {
+            transition: opacity 1s ease-in-out;
+        }
+        
+        /* 数字计数器动画 */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .count-animate {
+            animation: countUp 0.8s ease-out forwards;
+        }
+        
+        /* 卡片悬停效果 */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* 视差滚动效果 */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- 顶部导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 bg-white/95 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-primary text-3xl"><i class="fa fa-graduation-cap"></i></span>
+                <span class="text-2xl font-bold text-primary">长安二初</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-dark hover:text-primary font-medium transition-colors">首页</a>
+                <a href="#about" class="text-dark hover:text-primary font-medium transition-colors">学校概况</a>
+                <a href="#faculty" class="text-dark hover:text-primary font-medium transition-colors">师资队伍</a>
+                <a href="#education" class="text-dark hover:text-primary font-medium transition-colors">教育教学</a>
+                <a href="#student" class="text-dark hover:text-primary font-medium transition-colors">学生发展</a>
+                <a href="#recruit" class="text-dark hover:text-primary font-medium transition-colors">招生招聘</a>
+                <a href="#contact" class="text-dark hover:text-primary font-medium transition-colors">联系我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="text-dark hover:text-primary font-medium py-2 transition-colors">首页</a>
+                <a href="#about" class="text-dark hover:text-primary font-medium py-2 transition-colors">学校概况</a>
+                <a href="#faculty" class="text-dark hover:text-primary font-medium py-2 transition-colors">师资队伍</a>
+                <a href="#education" class="text-dark hover:text-primary font-medium py-2 transition-colors">教育教学</a>
+                <a href="#student" class="text-dark hover:text-primary font-medium py-2 transition-colors">学生发展</a>
+                <a href="#recruit" class="text-dark hover:text-primary font-medium py-2 transition-colors">招生招聘</a>
+                <a href="#contact" class="text-dark hover:text-primary font-medium py-2 transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域/轮播图 -->
+    <section id="home" class="relative h-screen pt-16">
+        <div class="banner-container absolute inset-0 overflow-hidden">
+            <div class="banner-slider h-full w-full">
+                <img src="微信图片_202505121610161.jpg" alt="校园全景" class="banner-img absolute inset-0 w-full h-full object-cover active">
+                <img src="微信图片_20250512161411.jpg" alt="课堂互动" class="banner-img absolute inset-0 w-full h-full object-cover">
+                <img src="微信图片_20250512161411.jpg" alt="社团活动" class="banner-img absolute inset-0 w-full h-full object-cover">
+            </div>
+            
+            <!-- 轮播图控制 -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-primary transition-all banner-dot active" data-index="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-primary transition-all banner-dot" data-index="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white/50 hover:bg-primary transition-all banner-dot" data-index="2"></button>
+            </div>
+            
+            <!-- 轮播图文字内容 -->
+            <div class="absolute inset-0 bg-black/30 flex items-center">
+                <div class="container mx-auto px-6 md:px-12">
+                    <div class="max-w-2xl">
+                        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight text-shadow mb-4">
+                            承长安文脉<br>育时代新人
+                        </h1>
+                        <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 max-w-xl">
+                            西安市长安区第二初级中学致力于提供优质教育，培养具有创新精神和社会责任感的新时代青少年。
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#about" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                                了解学校
+                            </a>
+                            <a href="#recruit" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium py-3 px-8 rounded-full transition-all border border-white/40">
+                                招生信息
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 向下滚动按钮 -->
+            <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+                <i class="fa fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 核心数据 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 rounded-xl bg-light shadow-sm hover-scale">
+                    <div class="text-primary text-4xl mb-2"><i class="fa fa-users"></i></div>
+                    <h3 class="text-3xl font-bold mb-1" id="counter-students">2300+</h3>
+                    <p class="text-gray-600">在校学生</p>
+                </div>
+                <div class="p-6 rounded-xl bg-light shadow-sm hover-scale">
+                    <div class="text-primary text-4xl mb-2"><i class="fa fa-chalkboard-teacher"></i></div>
+                    <h3 class="text-3xl font-bold mb-1" id="counter-teachers">120+</h3>
+                    <p class="text-gray-600">教职工</p>
+                </div>
+                <div class="p-6 rounded-xl bg-light shadow-sm hover-scale">
+                    <div class="text-primary text-4xl mb-2"><i class="fa fa-graduation-cap"></i></div>
+                    <h3 class="text-3xl font-bold mb-1" id="counter-classes">36</h3>
+                    <p class="text-gray-600">教学班</p>
+                </div>
+                <div class="p-6 rounded-xl bg-light shadow-sm hover-scale">
+                    <div class="text-primary text-4xl mb-2"><i class="fa fa-trophy"></i></div>
+                    <h3 class="text-3xl font-bold mb-1" id="counter-awards">120+</h3>
+                    <p class="text-gray-600">学科竞赛</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学校概况 -->
+    <section id="about" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">学校概况</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">西安市长安区第二初级中学成立于2019年，秉承"崇德乐学，追求卓越"的办学理念，致力于打造区域素质教育典范。</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="微信图片_202505121610021.jpg" alt="校园环境" class="w-full h-auto rounded-xl shadow-xl">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                        <p class="text-primary font-bold text-lg">建校时间：2019年</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">办学理念</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        学校以"崇德乐学，追求卓越"为校训，，全面推进素质教育，培养德智体美劳全面发展的社会主义建设者和接班人。
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">现代化设施</h4>
+                                <p class="text-gray-600">配备智能化教室、实验室、图书馆、体育馆等现代化教学设施。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">师资力量雄厚</h4>
+                                <p class="text-gray-600">拥有一支高素质的教师队伍，其中高级职称教师占比10%，研究生学历教师占比90%。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">特色课程丰富</h4>
+                                <p class="text-gray-600">开设科技创新、艺术鉴赏、体育健身等多元化选修课程，满足学生个性化发展需求。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#faculty" class="inline-flex items-center text-primary font-medium hover:underline">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园环境 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">校园环境</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">校园占地面积35亩，建筑面积2.5万平方米，布局合理，设施先进，环境优美。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="微信图片_20250512161348.jpg" alt="教学楼" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">教学楼</h3>
+                        <p class="text-gray-600">现代化教学楼，配备智能教学系统和多媒体教室，为师生提供优良的教学环境。</p>
+                    </div>
+                </div>
+                
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="ff4ab184917d45e1bae1584783f2e0ce.jpg" alt="图书馆" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">图书馆</h3>
+                        <p class="text-gray-600">图书馆藏书10万余册，配备电子阅览室和自习区，营造良好的学习氛围。</p>
+                    </div>
+                </div>
+                
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="微信图片_20250512161159.jpg" alt="运动场" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">运动场</h3>
+                        <p class="text-gray-600">标准塑胶跑道、足球场和篮球场，满足学生体育锻炼和课外活动需求。</p>
+                    </div>
+                </div>
+                
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="R-C.png" alt="实验室" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">科技实验室</h3>
+                        <p class="text-gray-600">配备物理、化学、生物等现代化实验室，为学生提供实践探究的平台。</p>
+                    </div>
+                </div>
+                
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="微信图片_20250512161009.jpg" alt="艺术中心" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">孔子广场</h3>
+                        <p class="text-gray-600">高大的孔子像，详细的孔子简介，让学生了解先贤。</p>
+                    </div>
+                </div>
+                
+                <div class="rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="微信图片_20250512161118.jpg" alt="食堂" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">为学食堂</h3>
+                        <p class="text-gray-600">宽敞明亮的学生食堂，严格把控食品安全，为学生提供健康营养的餐饮服务。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- 教育教学 -->
+    <section id="education" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">教育教学</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">学校坚持立德树人，深化教育教学改革，积极推进素质教育，努力提高教育教学质量。</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">课程体系</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        学校构建了"基础课程+拓展课程+特色课程"三位一体的课程体系，满足不同学生的发展需求。
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-book text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">基础课程</h4>
+                                <p class="text-gray-600">严格按照国家课程标准开齐开足各类课程，确保学生全面发展。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-rocket text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">拓展课程</h4>
+                                <p class="text-gray-600">开设学科拓展、科技创新、艺术鉴赏等课程，拓宽学生视野。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fa fa-star text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">特色课程</h4>
+                                <p class="text-gray-600">打造"长安文化"校本课程，传承弘扬中华优秀传统文化。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="微信图片_20250512160957.jpg" alt="课程展示" class="rounded-lg shadow-md hover-scale">
+                    <img src="微信图片_20250512161118.jpg" alt="课程展示" class="rounded-lg shadow-md hover-scale">
+                    <img src="微信图片_202505121611591.jpg" alt="课程展示" class="rounded-lg shadow-md hover-scale">
+                    <img src="微信图片_202505121610221.jpg" alt="课程展示" class="rounded-lg shadow-md hover-scale">
+                </div>
+            </div>
+            
+            <!-- 教学成果 -->
+            <div class="bg-light rounded-2xl p-8 md:p-12 shadow-lg">
+                <h3 class="text-2xl font-bold mb-8 text-center">教学成果</h3>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-primary text-4xl mb-4"><i class="fa fa-trophy"></i></div>
+                        <h4 class="font-bold text-xl mb-2">学科竞赛</h4>
+                        <p class="text-gray-600 mb-4">近年来，学生在数学、物理、化学、生物等学科竞赛中获国家级奖项120余项，省级奖项300余项。</p>
+                        <div class="flex items-center">
+                            <span class="text-2xl font-bold text-primary mr-2">120+</span>
+                            <span class="text-gray-500">国家级奖项</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-primary text-4xl mb-4"><i class="fa fa-graduation-cap"></i></div>
+                        <h4 class="font-bold text-xl mb-2">中考成绩</h4>
+                        <p class="text-gray-600 mb-4">中考成绩连续多年位居全区前列，重点高中上线率保持在65%以上，普高上线率达90%以上。</p>
+                        <div class="flex items-center">
+                            <span class="text-2xl font-bold text-primary mr-2">65%</span>
+                            <span class="text-gray-500">重点高中上线率</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-primary text-4xl mb-4"><i class="fa fa-lightbulb-o"></i></div>
+                        <h4 class="font-bold text-xl mb-2">科技创新</h4>
+                        <p class="text-gray-600 mb-4">学生在科技创新大赛中获奖项20余项，区级奖项50余项。</p>
+                        <div class="flex items-center">
+                            <span class="text-2xl font-bold text-primary mr-2">120+</span>
+                            <span class="text-gray-500">奖项</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学生发展 -->
+    <section id="student" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">学生发展</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">学校注重学生全面发展，开展丰富多彩的社团活动和社会实践，为学生提供展示自我的平台。</p>
+            </div>
+            
+            <!-- 学生社团 -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div class="order-2 md:order-1">
+                    <img src="https://picsum.photos/id/28/800/600" alt="学生社团" class="w-full h-auto rounded-xl shadow-xl">
+                </div>
+                
+                <div class="order-1 md:order-2 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4">学生社团</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        学校现有科技创新社、物理社、书画社、合唱团、舞蹈队、田径队、足球队等20余个学生社团，为学生提供了发展兴趣爱好、培养个性特长的广阔天地。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-code text-primary"></i>
+                            </div>
+                            <span>科技创新社</span>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-paint-brush text-primary"></i>
+                            </div>
+                            <span>书画社</span>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-music text-primary"></i>
+                            </div>
+                            <span>合唱团</span>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-futbol-o text-primary"></i>
+                            </div>
+                            <span>足球队</span>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-book text-primary"></i>
+                            </div>
+                            <span>物理社</span>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-3">
+                                <i class="fa fa-video-camera text-primary"></i>
+                            </div>
+                            <span>劳动社</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 校园活动 -->
+            <h3 class="text-2xl font-bold mb-8 text-center">校园活动</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="https://picsum.photos/id/239/600/400" alt="科技节" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">科技创新</span>
+                        <h4 class="font-bold text-xl mt-3 mb-2">校园科技节</h4>
+                        <p class="text-gray-600 mb-4">每年举办的校园科技节，为学生提供了展示科技成果、交流创新思想的平台。</p>
+                        <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="R-C刚刚.jpg" alt="文化艺术节" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-medium bg-secondary/10 text-secondary px-3 py-1 rounded-full">艺术教育</span>
+                        <h4 class="font-bold text-xl mt-3 mb-2">校园文化艺术节</h4>
+                        <p class="text-gray-600 mb-4">丰富多彩的文化艺术活动，丰富了学生的课余生活，培养了学生的审美情趣。</p>
+                        <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <img src="微信图片_202505121612451.jpg" alt="运动会" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-medium bg-green-100 text-green-600 px-3 py-1 rounded-full">体育健康</span>
+                        <h4 class="font-bold text-xl mt-3 mb-2">校园运动会</h4>
+                        <p class="text-gray-600 mb-4">每年一度的校园运动会，展现了学生的青春活力和团结协作精神。</p>
+                        <a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 招生招聘 -->
+    <section id="recruit" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">招生招聘</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">欢迎优秀学子加入长安二初，共创美好未来。同时，学校诚邀优秀教师加盟。</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- 招生信息 -->
+                <div class="bg-light rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-user-plus text-primary mr-3"></i> 招生信息
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">2024年七年级招生</h4>
+                            <p class="text-gray-600 mb-4">计划招收18个班，共900名新生。</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-sm text-gray-500">招生对象：</span>
+                                    <p>学区内小学应届毕业生</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">报名时间：</span>
+                                    <p>2024年6月1日-6月30日</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">报名方式：</span>
+                                    <p>网上报名</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">咨询电话：</span>
+                                    <p>029-88888888</p>
+                                </div>
+                            </div>
+                            <a href="#" class="mt-4 inline-block text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">特长生招生</h4>
+                            <p class="text-gray-600 mb-4">招收体育、艺术、科技等方面的特长生。</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-sm text-gray-500">招生类别：</span>
+                                    <p>体育、艺术、科技</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">报名时间：</span>
+                                    <p>2025年5月15日-5月30日</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">测试时间：</span>
+                                    <p>2025年6月10日</p>
+                                </div>
+                                <div>
+                                    <span class="text-sm text-gray-500">咨询电话：</span>
+                                    <p>029-88888889</p>
+                                </div>
+                            </div>
+                            <a href="#" class="mt-4 inline-block text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 教师招聘 -->
+                <div class="bg-light rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fa fa-briefcase text-primary mr-3"></i> 教师招聘
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">2025年教师招聘启事</h4>
+                            <p class="text-gray-600 mb-4">我校因发展需要，诚聘优秀教师。</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <span class="text-sm text-gray-500 w-24">招聘学科：</span>
+                                    <p>语文、数学、英语、物理、化学、生物、历史、地理、政治、体育、音乐、美术</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-sm text-gray-500 w-24">招聘条件：</span>
+                                    <p>本科及以上学历，具有相应学科教师资格证，有教学经验者优先。</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-sm text-gray-500 w-24">报名时间：</span>
+                                    <p>2025年3月1日-4月30日</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-sm text-gray-500 w-24">报名方式：</span>
+                                    <p>网上报名</p>
+                                </div>
+                            </div>
+                            <a href="#" class="mt-4 inline-block text-primary font-medium hover:underline">查看详情</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <h4 class="font-bold text-lg mb-2">福利待遇</h4>
+                            <ul class="text-gray-600 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>具有竞争力的薪资待遇</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>完善的社会保障体系</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>良好的职业发展空间</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>丰富的培训和学习机会</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="mt-4 inline-block text-primary font-medium hover:underline">应聘入口</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">联系我们</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">欢迎各界人士前来参观交流，我们将竭诚为您服务。</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fa fa-map-marker text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">学校地址</h4>
+                                    <p class="text-gray-600">西安市长安区XX路XX号</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fa fa-phone text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">联系电话</h4>
+                                    <p class="text-gray-600">029-88888888（办公室）</p>
+                                    <p class="text-gray-600">029-88888889（招生办）</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fa fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">电子邮箱</h4>
+                                    <p class="text-gray-600">changan2chu@example.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                    <i class="fa fa-clock-o text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">办公时间</h4>
+                                    <p class="text-gray-600">周一至周五: 8:00 - 17:30</p>
+                                    <p class="text-gray-600">周六、周日及法定节假日休息</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-3">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                                <a href="#" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition-colors">
+                                    <i class="fa fa-qq"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">留言反馈</h3>
+                        
+                        <form>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="请输入您的姓名">
+                                </div>
+                                
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="请输入
